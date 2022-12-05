@@ -30,7 +30,9 @@ export const PeliculaId = () => {
     )
       .then((response) => response.json())
       .then((obj) => {
-        setPlataforma(obj.results.AR.flatrate);
+        if (typeof obj.results.AR.flatrate !== "undefined") {
+          setPlataforma(obj.results.AR.flatrate);
+        }
       })
       .catch((err) => console.error(err));
   }, [id]);
